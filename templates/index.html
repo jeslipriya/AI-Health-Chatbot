@@ -4,28 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Advisor - Gemini AI</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* General Styles */
+       
         body {
-            background-color: #F7F9FC; /* Light Gray Background */
+            background-color: #F7F9FC; 
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
         }
 
-        /* Chat Container */
         .chat-container {
             max-width: 800px;
             margin: 50px auto;
             padding: 20px;
-            background: #FFFFFF; /* White Container Background */
+            background: #FFFFFF; 
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        /* Chat Box */
         .chat-box {
             height: 400px;
             overflow-y: auto;
@@ -33,14 +30,13 @@
             border-radius: 10px;
             padding: 15px;
             margin-bottom: 20px;
-            background: #FFFFFF; /* White Chat Box Background */
+            background: #FFFFFF; 
             display: flex;
             flex-direction: column;
         }
 
-        /* User Message */
         .user-message {
-            background: #4A90E2; /* Blue for User Messages */
+            background: #4A90E2; 
             color: white;
             padding: 10px 15px;
             border-radius: 10px 10px 0 10px;
@@ -50,10 +46,9 @@
             font-family: 'Arial', sans-serif;
         }
 
-        /* Bot Message */
         .bot-message {
-            background: #E9F5E9; /* Light Green for Bot Messages */
-            color: #2D3748; /* Dark Gray Text */
+            background: #E9F5E9; 
+            color: #2D3748; 
             padding: 10px 15px;
             border-radius: 10px 10px 10px 0;
             margin-bottom: 10px;
@@ -63,7 +58,6 @@
             position: relative;
         }
 
-        /* Bot Emoji */
         .bot-message::before {
             content: "🤖";
             position: absolute;
@@ -72,24 +66,21 @@
             font-size: 1.5rem;
         }
 
-        /* Bot Response Text */
         .bot-response {
             font-weight: bold;
-            color: #2C7A7B; /* Teal for Bold Text */
+            color: #2C7A7B; 
         }
 
         .bot-response-normal {
             font-weight: normal;
-            color: #2D3748; /* Dark Gray for Normal Text */
+            color: #2D3748; 
         }
 
-        /* Input Group */
         .input-group {
             display: flex;
             gap: 10px;
         }
 
-        /* User Input */
         #user-input {
             flex: 1;
             border-radius: 10px;
@@ -98,9 +89,8 @@
             font-family: 'Arial', sans-serif;
         }
 
-        /* Send Button */
         #send-btn {
-            background: #4A90E2; /* Blue for Send Button */
+            background: #4A90E2; 
             color: white;
             border: none;
             border-radius: 10px;
@@ -111,12 +101,11 @@
         }
 
         #send-btn:hover {
-            background: #357ABD; /* Darker Blue on Hover */
+            background: #357ABD;
         }
 
-        /* Header */
         h1 {
-            color: #2C7A7B; /* Teal for Header */
+            color: #2C7A7B; 
             font-family: 'Georgia', serif;
             text-align: center;
             margin-bottom: 20px;
@@ -137,7 +126,6 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const chatBox = document.getElementById("chat-box");
@@ -148,19 +136,15 @@
             const question = userInput.value.trim();
             if (!question) return;
 
-            // Add user's message to chat
             const userMessage = document.createElement("div");
             userMessage.className = "user-message";
             userMessage.textContent = question;
             chatBox.appendChild(userMessage);
 
-            // Clear input
             userInput.value = "";
 
-            // Scroll to bottom
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // Fetch response from backend
             try {
                 const response = await fetch("/ask", {
                     method: "POST",
@@ -171,39 +155,31 @@
                 });
                 const data = await response.json();
 
-                // Remove ** from the response
                 const cleanResponse = data.answer.replace(/\*\*/g, "");
 
-                // Format AI's response into small paragraphs
                 const formattedResponse = formatResponse(cleanResponse);
 
-                // Add bot's response to chat
                 const botMessage = document.createElement("div");
                 botMessage.className = "bot-message";
                 botMessage.innerHTML = formattedResponse;
                 chatBox.appendChild(botMessage);
 
-                // Scroll to bottom
                 chatBox.scrollTop = chatBox.scrollHeight;
             } catch (error) {
                 console.error("Error fetching response:", error);
             }
         });
 
-        // Allow pressing Enter to send message
         userInput.addEventListener("keypress", (e) => {
             if (e.key === "Enter") {
                 sendBtn.click();
             }
         });
 
-        // Function to format AI's response into small paragraphs
         function formatResponse(response) {
-            // Split the response into sentences
             const sentences = response.split(". ");
             let formattedText = "";
 
-            // Add each sentence as a new paragraph
             sentences.forEach((sentence) => {
                 if (sentence.trim()) {
                     formattedText += `<p class="bot-response-normal">${sentence}.</p>`;

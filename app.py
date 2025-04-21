@@ -5,7 +5,6 @@ import google.generativeai as genai
 API_KEY = "AIzaSyDVY7Rxr_GpwXiG5QiqIgq7tdKimGbLFoA"  # Replace with your actual Gemini API key
 genai.configure(api_key=API_KEY)
 
-# List of health-related keywords
 HEALTH_KEYWORDS = [
     "fever", "cold", "flu", 'diabetes', 'hypertension', 'cancer', 'asthma', "hi",
     'allergy', 'infection', 'migraine', 'stroke Cardiology', 'dermatology', "hello",
@@ -26,21 +25,16 @@ def is_health_related(question):
 def get_health_response(question):
     """Get health-related responses from Gemini AI."""
     try:
-        # Check if the question is health-related
         if not is_health_related(question):
             return "I can only answer health-related questions. Please ask about health."
 
-        # Initialize the Gemini model
         model = genai.GenerativeModel("gemini-1.5-pro")
-        
-        # Generate a response
+
         response = model.generate_content(question)
         
-        # Return the generated text or a default message if no text is available
         return response.text if response.text else "Sorry, I couldn't generate a response."
     
     except Exception as e:
-        # Handle any errors that occur during the API call
         return f"An error occurred: {str(e)}"
 
 app = Flask(__name__)
