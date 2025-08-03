@@ -1,20 +1,20 @@
 # Health Chatbot using Flask & Gemini AI
 
-## 🚀 Overview
+## Overview
 This is a simple **Flask-based Health Chatbot** that uses Google's **Gemini AI** to provide responses to health-related questions. The chatbot is designed to answer queries about various health topics such as diseases, symptoms, treatments, nutrition, and fitness.
 
-## 📌 Features
-- 🤖 Uses **Gemini AI (Generative Model)** for generating responses.
-- 🏥 Recognizes health-related questions using keyword filtering.
-- 🌐 **Flask Web App** for easy interaction.
-- 📜 Supports **JSON-based API** for chatbot integration.
+## Features
+- Uses **Gemini AI (Generative Model)** for generating responses.
+- Recognizes health-related questions using keyword filtering.
+- **Flask Web App** for easy interaction.
+- Supports **JSON-based API** for chatbot integration.
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **Python** (Flask)
 - **Google Gemini AI** (Generative Model API)
 - **HTML/CSS/JavaScript** (for frontend)
 
-## 📂 Project Structure
+## Project Structure
 ```
 /health-chatbot
 │── app.py                 # Main Flask app
@@ -24,7 +24,7 @@ This is a simple **Flask-based Health Chatbot** that uses Google's **Gemini AI**
 │── README.md              # Project documentation
 ```
 
-## 🏃‍♂️ Getting Started
+## Getting Started
 
 ### 🔹 1. Clone the repository
 ```sh
@@ -53,7 +53,7 @@ python app.py
 ```
 Access the chatbot at **http://127.0.0.1:5000/** in your browser.
 
-## ⚡ API Endpoint
+## API Endpoint
 The chatbot also supports a **POST** request for API integration:
 ```
 POST /ask
@@ -61,16 +61,13 @@ Request Body: { "question": "What are the symptoms of flu?" }
 Response: { "answer": "Flu symptoms include fever, cough, sore throat..." }
 ```
 
-## 🛠️ Customization
+## Customization
 - Modify `HEALTH_KEYWORDS` in `app.py` to improve keyword filtering.
 - Edit `index.html` for a better UI experience.
 
-## 🤝 Contributing
+## Contributing
 Pull requests are welcome! Feel free to suggest improvements.
 
-## 📜 License
-This project is licensed under the MIT License.
-
 ---
-**🚀 Let's build smarter health solutions together!**
+**Let's build smarter health solutions together!**
 
