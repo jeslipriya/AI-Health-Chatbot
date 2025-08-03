@@ -28,8 +28,8 @@ This is a simple **Flask-based Health Chatbot** that uses Google's **Gemini AI**
 
 ### 🔹 1. Clone the repository
 ```sh
-git clone https://github.com/your-username/health-chatbot.git
-cd health-chatbot
+git clone https://github.com/jeslipriya/AI-Health-Chatbot.git
+cd AI-Health-Chatbot
 ```
 
 ### 🔹 2. Create a virtual environment (optional but recommended)
